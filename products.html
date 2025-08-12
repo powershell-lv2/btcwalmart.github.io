@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>สินค้า | BTC Walmart</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>สินค้า BTC Walmart</h1>
+    <nav>
+      <a href="index.html">หน้าแรก</a>
+      <a href="cart.html">ตะกร้า</a>
+      <a href="login.html">เข้าสู่ระบบ</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="product-list">
+      <div class="product">
+        <h3>iPhone 15 Pro</h3>
+        <p>ราคา: 0.015 BTC</p>
+        <button onclick="addToCart('iPhone 15 Pro', 0.015)">เพิ่มลงตะกร้า</button>
+      </div>
+
+      <div class="product">
+        <h3>MacBook Air M3</h3>
+        <p>ราคา: 0.025 BTC</p>
+        <button onclick="addToCart('MacBook Air M3', 0.025)">เพิ่มลงตะกร้า</button>
+      </div>
+
+      <div class="product">
+        <h3>Ledger Nano X</h3>
+        <p>ราคา: 0.005 BTC</p>
+        <button onclick="addToCart('Ledger Nano X', 0.005)">เพิ่มลงตะกร้า</button>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 BTC Walmart</p>
+  </footer>
+
+  <script>
+    function addToCart(name, price) {
+      const cart = JSON.parse(localStorage.getItem('cart')) || [];
+      cart.push({ name, price });
+      localStorage.setItem('cart', JSON.stringify(cart));
+      alert(`${name} ถูกเพิ่มลงตะกร้าแล้ว`);
+    }
+  </script>
+</body>
+</html>
