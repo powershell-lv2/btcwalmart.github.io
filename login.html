@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>เข้าสู่ระบบ | BTC Walmart</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js"></script>
+  <script src="firebase-config.js"></script>
+</head>
+<body>
+  <header>
+    <h1>เข้าสู่ระบบ</h1>
+    <nav>
+      <a href="index.html">หน้าแรก</a>
+      <a href="register.html">สมัครสมาชิก</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="login-form">
+      <h2>กรุณาเข้าสู่ระบบ</h2>
+      <input type="email" id="email" placeholder="อีเมล" required />
+      <input type="password" id="password" placeholder="รหัสผ่าน" required />
+      <button onclick="login()">เข้าสู่ระบบ</button>
+      <p id="message"></p>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 BTC Walmart</p>
+  </footer>
+
+  <script>
+    const auth = firebase.auth();
+
+    function login() {
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+
+      auth.signInWithEmailAndPassword(email, password)
+        .then(user => {
+          document.getElementById('message').textContent = 'เข้าสู่ระบบสำเร็จ!';
+          setTimeout(() => {
+            window.location.href = 'products.html';
+          }, 1000);
+        })
+        .catch(error => {
+          document.getElementById('message').textContent = 'เข้าสู่ระบบไม่สำเร็จ: ' + error.message;
+        });
+    }
+  </script>
+</body>
+</html>
